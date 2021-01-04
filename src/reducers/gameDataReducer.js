@@ -1,14 +1,19 @@
 
 const INTIAL_STATE = {
+    currentTable: "test",
     currentUser: null,
-    imageUrl: ""
+    imageUrl: "",
 }
 const userReducer = (state = INTIAL_STATE, action ) => {
     
     switch(action.type){
-        case 'UPDATE_MOVE':
-            return state
+        case 'MOVE_TABLES':
+            return {
+                ...state,
+                currentTable: action.payload
+            }
         case 'SET_CURRENT_USER':
+            
             return {
                 ...state,
                 currentUser: action.payload

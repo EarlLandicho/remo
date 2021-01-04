@@ -5,9 +5,16 @@ export const setCurrentUser = user => (
     }
 )
 
-export const setImageUrl= imageUrl => (
+export const setImageUrl = imageUrl => (
     {
         type: 'SET_IMAGE_URL', 
         payload: imageUrl
+    }
+)
+
+export const moveTables = newTable => (
+    {
+        type: 'MOVE_TABLES',
+        payload: newTable
     }
 )
