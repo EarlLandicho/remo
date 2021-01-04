@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
-import Auth from './components/Auth.jsx';
+import Auth from './components/Auth.js';
 import Theater from './components/Theater';
 import {connect} from 'react-redux'
 import {setCurrentUser} from './reducers/gameDataActions'
