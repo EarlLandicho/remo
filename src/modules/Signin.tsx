@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Firebase from '../services/firebase';
+import Firebase from '../services/firebase.js';
 import { useHistory } from 'react-router-dom';
 
 const SignIn: React.FC = () => {
