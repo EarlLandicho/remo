@@ -5,6 +5,7 @@ import Auth from './components/Auth.js';
 import Theater from './components/Theater';
 import {connect} from 'react-redux'
 import {setCurrentUser} from './reducers/gameDataActions'
+import { auth } from 'services/firebase';
 
 
 
@@ -13,41 +14,13 @@ import {setCurrentUser} from './reducers/gameDataActions'
 
 class App extends React.Component {
  
-  
-
-  // unsubscribeFromAuth = null
-
-  // componentDidMount(){
-  //   const { setCurrentUser } = this.props;
-    
-    
-
-  //   this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      
-  //     if (userAuth) {
-  //       const userRef = await createUserProfileDocument(userAuth);
-  //       console.log(userAuth);
-  //       userRef.onSnapshot(snapShot => {
-  //         setCurrentUser({
-  //           id: snapShot.id,
-  //           ...snapShot.data()
-  //         });
-  //       });
-  //     }
-
-      
-  //     setCurrentUser(userAuth);
-  //   });
-    
-  // }
-
-
   componentWillUnmount() {
     this.unsubscribeFromAuth()
   }
 
 
   render(){
+    console.log(this.props.currentUser);
     return (
       
       <Router>
@@ -63,9 +36,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = dispatch => (
   {
-    // Key         : Call Back Function -> user => dispatch(setCurrentUser(user))
     setCurrentUser : function (user){
-      // dispatching setCurrentUser Action Creator with the user parameter
       dispatch(setCurrentUser(user))
     }
   }
