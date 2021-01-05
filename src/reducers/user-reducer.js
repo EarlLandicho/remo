@@ -1,6 +1,6 @@
 
 const INTIAL_STATE = {
-    currentTable: "test",
+    currentTable: "",
     currentUser: null,
     imageUrl: "",
 }

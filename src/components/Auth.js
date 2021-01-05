@@ -3,7 +3,7 @@ import Firebase from '../services/firebase.js';
 import { useHistory } from 'react-router-dom';
 import { sendGetRequest, sendPostRequest } from '../apis';
 import {connect} from 'react-redux'
-import {setCurrentUser, setImageUrl} from '../reducers/gameDataActions'
+import {setCurrentUser, setImageUrl} from '../reducers/actions'
 import {auth, createUserProfileDocument} from '../services/firebase'
 
 function storeUser(props)

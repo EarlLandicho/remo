@@ -1,25 +1,35 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import {connect} from 'react-redux'
-import { moveTables, setImageUrl } from 'reducers/gameDataActions';
+import { moveTables, setImageUrl, addUserToTable, removeUserFromTable, setLastTable } from 'reducers/actions';
+import Seat from './seat';
 import TableConfig from './tableConfig.json';
 
-function Table({setImageUrl, moveTables, imageUrl, currentTable, tableName, width, height, top, left})
+function Table({setLastTable, removeUserFromTable, users, lastTable, addUserToTable, currentUser, currentTable, setImageUrl, moveTables, imageUrl, seats, tableName, width, height, top, left})
 {
+
+
     function handleClick()
     {
-        
         setImageUrl(imageUrl);
         moveTables(tableName);
+        addUserToTable(currentUser);
+        if(tableName != lastTable)
+        {
+            removeUserFromTable(currentUser);
+        }
+        setLastTable(tableName);
+
+        console.log(users)
     }
-    
-    
-    return(
+
+    return( 
         <div>
-            <div value = "test" onClick = {handleClick} className='rt-room' style={{width: width, height: height, top: top, left: left}} >
+            <div onClick = {handleClick} className='rt-room' style={{width: width, height: height, top: top, left: left}} >
 
-                {tableName == currentTable ? <img src={imageUrl} alt="No Image"/>: null}
-
-                <div className='rt-room-name'>{tableName}</div>
+            {
+                tableName === currentTable ? <Seat imageUrl = {imageUrl} xPos = {seats[0].x} yPos = {seats[0].y}/> : null
+            }
+            <div className='rt-room-name'>{tableName}</div>
 
             </div>
 
@@ -32,10 +42,13 @@ function Table({setImageUrl, moveTables, imageUrl, currentTable, tableName, widt
 
 }
 
-const mapStateToProps = ({user}) => (
+const mapStateToProps = ({user, tables}) => (
     {
         imageUrl : user.imageUrl,
-        currentTable: user.currentTable
+        currentTable: user.currentTable,
+        currentUser: user.currentUser,
+        users: tables.users,
+        lastTable : tables.lastTable
     }
 )
 
@@ -48,6 +61,18 @@ const mapDispatchToProps = dispatch => (
         moveTables: (tableName) => {
             dispatch(moveTables(tableName))
         },
+
+        addUserToTable : (user) => {
+            dispatch(addUserToTable(user))
+        },
+
+        removeUserFromTable : (user) => {
+            dispatch(removeUserFromTable(user))
+        },
+
+        setLastTable : (lastTable => {
+            dispatch(setLastTable(lastTable))
+        })
     }
 )
 

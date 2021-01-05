@@ -4,7 +4,7 @@ import './App.scss';
 import Auth from './components/Auth.js';
 import Theater from './components/Theater';
 import {connect} from 'react-redux'
-import {setCurrentUser} from './reducers/gameDataActions'
+import {setCurrentUser} from './reducers/actions'
 import { auth } from 'services/firebase';
 
 

@@ -5,7 +5,7 @@ import App from './App';
 import './index.scss';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers/rootReducer';
+import rootReducer from './reducers/root-reducer';
 import {persistStore} from 'redux-persist'
 import logger from 'redux-logger'
 import { PersistGate } from 'redux-persist/integration/react';
